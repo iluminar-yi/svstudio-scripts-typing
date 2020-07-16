@@ -1,5 +1,7 @@
 {
   "name": "svstudio-scripts-typing",
+  "private": true,
+  "files": ["!tests"],
   "version": "1.0.0",
   "description": "",
   "main": "global.d.ts",
