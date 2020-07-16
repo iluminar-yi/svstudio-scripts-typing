@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "noImplicitAny": false,
+    "strict": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "checkJs": true,
+    "lib": ["ES5"],
+    "outDir": "test-out"
+  }
+}

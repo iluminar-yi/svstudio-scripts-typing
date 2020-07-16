@@ -1,0 +1,22 @@
+{
+  "name": "svstudio-scripts-typing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "global.d.ts",
+  "scripts": {
+    "test": "./node_modules/.bin/tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iluminar-yi/svstudio-scripts-typing.git"
+  },
+  "author": "Iluminar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iluminar-yi/svstudio-scripts-typing/issues"
+  },
+  "homepage": "https://github.com/iluminar-yi/svstudio-scripts-typing#readme",
+  "devDependencies": {
+    "typescript": "^3.9.6"
+  }
+}
