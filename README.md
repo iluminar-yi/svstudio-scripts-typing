@@ -29,7 +29,7 @@ Note that you have to implement two functions (which cannot be enforced via Type
 1. To compile, run:
     ```bash
     # In the project root folder
-    ./node_modules/.bin/tsc
+    npx tsc
     ```
    
 ### JavaScript
