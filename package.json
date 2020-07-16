@@ -1,7 +1,10 @@
 {
   "name": "svstudio-scripts-typing",
   "private": true,
-  "files": ["!tests"],
+  "files": [
+    "!tests",
+    "tsconfig.json"
+  ],
   "version": "1.0.0",
   "description": "",
   "main": "global.d.ts",
@@ -19,6 +22,9 @@
   },
   "homepage": "https://github.com/iluminar-yi/svstudio-scripts-typing#readme",
   "devDependencies": {
+    "typescript": "^3.9.6"
+  },
+  "peerDependencies": {
     "typescript": "^3.9.6"
   }
 }
