@@ -1468,7 +1468,7 @@ interface VoiceParameters {
 }
 
 interface WidgetAnswers {
-  status: 'Yes' | 'No';
+  status: 'Yes' | 'No' | 'Cancel';
   answers: {
     [k: string]: string | number | boolean;
   }
