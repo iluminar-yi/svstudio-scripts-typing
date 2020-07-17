@@ -267,8 +267,8 @@ export interface CustomDialogForm {
   widgets: WidgetOptions[];
 }
 
-type ParameterType = 'PitchDelta' | 'VibratoEnv' | 'Loudness' | 'Tension' | 'Breathiness' | 'Voicing' | 'Gender';
-type Definition = (
+export type ParameterType = 'PitchDelta' | 'VibratoEnv' | 'Loudness' | 'Tension' | 'Breathiness' | 'Voicing' | 'Gender';
+export type Definition = (
   | { displayName: 'Pitch Deviation'; typeName: 'pitchDelta' }
   | { displayName: 'Vibrato Envelope'; typeName: 'vibratoEnv' }
   | { displayName: 'Loudness'; typeName: 'loudness' }
