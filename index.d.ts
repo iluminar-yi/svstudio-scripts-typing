@@ -11,12 +11,12 @@
  *   <li>use SV:getArrangement():getSelection() in Lua</li>
  * </ul>
  */
-interface ArrangementSelectionState extends NestedObject, SelectionStateBase, GroupSelection {}
+export interface ArrangementSelectionState extends NestedObject, SelectionStateBase, GroupSelection {}
 
 /**
  * The UI state object for arrangement view.
  */
-interface ArrangementView extends NestedObject {
+export interface ArrangementView extends NestedObject {
   /**
    * Get the coordinate system for the track arrangement area.
    */
@@ -35,7 +35,7 @@ interface ArrangementView extends NestedObject {
  *   <li>"Cubic" - modified Catmull-Rom spline interpolation</li>
  * </ul>
  */
-type InterpolationMethod = 'Linear' | 'Cosine' | 'Cubic';
+export type InterpolationMethod = 'Linear' | 'Cosine' | 'Cubic';
 
 /**
  * A set of points controlling a particular parameter type (e.g. Pitch Deviation) inside a {@link NoteGroup}.
@@ -44,7 +44,7 @@ type InterpolationMethod = 'Linear' | 'Cosine' | 'Cubic';
  * draggable control points; in some more advanced cases, the envelope may also control properties of plugins (e.g. filter cutoff, reverb length, ...).
  * One notable difference is that in Synthesizer V Studio, Automation is defined for each {@link NoteGroup} as opposed to {@link Track}.
  */
-interface Automation extends Cloneable, NestedObject {
+export interface Automation extends Cloneable, NestedObject {
   /**
    * Add a control point with position b (blicks) and parameter value v.
    * If there is already a point on b, the parameter value will get updated to v.
@@ -134,7 +134,7 @@ interface Automation extends Cloneable, NestedObject {
   simplify(begin: number, end: number, threshold?: number): boolean;
 }
 
-interface ClientInfo {
+export interface ClientInfo {
   name: string;
   category: string;
   author: string;
@@ -143,9 +143,9 @@ interface ClientInfo {
 }
 
 /**
- * Utility interface to represent classes that have the {@link Cloneable#clone()} method.
+ * Utility export interface to represent classes that have the {@link Cloneable#clone()} method.
  */
-interface Cloneable {
+export interface Cloneable {
   /**
    * A deep copy of the current object.
    */
@@ -159,7 +159,7 @@ interface Cloneable {
  * In both cases, the unit for the x-axis is blicks.
  * However, the arrangement area only uses CoordinateSystem for the x-axis.
  */
-interface CoordinateSystem extends NestedObject {
+export interface CoordinateSystem extends NestedObject {
   /**
    * Get the scaling factor in the horizontal direction.
    * <br>
@@ -245,7 +245,7 @@ interface CoordinateSystem extends NestedObject {
   y2v(y: number): number;
 }
 
-interface CustomDialogForm {
+export interface CustomDialogForm {
   /**
    * The dialog's title
    */
@@ -283,7 +283,7 @@ type Definition = (
 /**
  * A collection of group selection behaviors.
  */
-interface GroupSelection {
+export interface GroupSelection {
   /**
    * Unselect all {@link NoteGroupReference}. Return true if the selection has changed.
    */
@@ -314,7 +314,7 @@ interface GroupSelection {
   unselectGroup(reference: NoteGroupReference): boolean;
 }
 
-interface HostInfo {
+export interface HostInfo {
   osType: 'Windows' | 'macOS' | 'Linux' | 'Unknown';
 
   /**
@@ -342,7 +342,7 @@ interface HostInfo {
 /**
  * The UI state object for the piano roll.
  */
-interface MainEditorView extends NestedObject {
+export interface MainEditorView extends NestedObject {
   /**
    * Get the current {@link NoteGroupReference} that the user is working inside.
    * If the user has not entered a {@link NoteGroupReference}, return the main group of the current track.
@@ -365,7 +365,7 @@ interface MainEditorView extends NestedObject {
   getSelection(): TrackInnerSelectionState;
 }
 
-interface MeasureMark {
+export interface MeasureMark {
   /**
    * The measure number at where the mark is placed
    */
@@ -389,9 +389,9 @@ interface MeasureMark {
 
 /**
  * NestedObject is the base class for all objects that can be passed between the host (Synthesizer V Studio) and the client (the script environment). It implements a tree structure for indexing everything inside a project.
- * Besides that, some UI elements are also exposed through the NestedObject interface.
+ * Besides that, some UI elements are also exposed through the NestedObject export interface.
  */
-interface NestedObject {
+export interface NestedObject {
   /**
    * Get index of the current object in its parent.
    * In Lua, this index starts from 1.
@@ -413,7 +413,7 @@ interface NestedObject {
 /**
  * A note defined by pitch, lyrics, onset, duration, etc. It is placed inside a {@link NoteGroup}.
  */
-interface Note extends Cloneable, NestedObject {
+export interface Note extends Cloneable, NestedObject {
   /**
    * Get an object holding note properties.
    */
@@ -504,7 +504,7 @@ interface Note extends Cloneable, NestedObject {
  * it has to be wrapped in a {@link NoteGroupReference} which provides the context
  * (e.g. voice, language, time and pitch offset) for the group.
  */
-interface NoteGroup extends Cloneable, NestedObject {
+export interface NoteGroup extends Cloneable, NestedObject {
   /**
    * Add a note to this NoteGroup and return the index of the added note.
    * The notes are kept sorted by ascending onset positions.
@@ -565,7 +565,7 @@ interface NoteGroup extends Cloneable, NestedObject {
  * A NoteGroupReference is always placed inside a {@link Track}.
  * A {@link NoteGroup} may be referenced by more than one NoteGroupReference.
  */
-interface NoteGroupReference extends Cloneable, NestedObject {
+export interface NoteGroupReference extends Cloneable, NestedObject {
   /**
    * A deep copy of the current object.
    * <br>
@@ -656,11 +656,11 @@ interface NoteGroupReference extends Cloneable, NestedObject {
   setVoice(attributes: Partial<VoiceParameters>): void;
 }
 
-type PlaybackStatus = 'playing' | 'looping' | 'stopped';
+export type PlaybackStatus = 'playing' | 'looping' | 'stopped';
 /**
  * The UI state object for controlling audio playback.
  */
-interface PlaybackControl extends NestedObject {
+export interface PlaybackControl extends NestedObject {
   /**
    * Get the current playhead position in seconds.
    * <br>
@@ -707,7 +707,7 @@ interface PlaybackControl extends NestedObject {
 /**
  * The largest object to work with. Contains {@link Track}, {@link TimeAxis}, {@link NoteGroup}, etc.
  */
-interface Project extends NestedObject {
+export interface Project extends NestedObject {
   /**
    * Insert a {@link NoteGroup} to the project library at suggestedIndex.
    * If suggestedIndex is not given, the {@link NoteGroup} is added at the end.
@@ -789,9 +789,9 @@ interface Project extends NestedObject {
 }
 
 /**
- * A basic interface for selection states.
+ * A basic export interface for selection states.
  */
-interface SelectionStateBase {
+export interface SelectionStateBase {
   /**
    * Unselects all object types supported by this selection state. Return true if the selection has changed.
    */
@@ -810,10 +810,10 @@ interface SelectionStateBase {
   hasUnfinishedEdits(): boolean;
 }
 
-/*
+/**
  * The host object is a global object named {@link SV} that can be accessed from anywhere in a script.
  */
-declare namespace SV {
+export interface SV {
   /**
    * Number of blicks in a quarter. The value is 705600000.
    * <br>
@@ -822,7 +822,7 @@ declare namespace SV {
    * It is a large number chosen to be divisible by a lot of similarly purposed numbers used in music software.
    * The name originates from <a href="https://github.com/facebookarchive/Flicks">Flicks</a>.
    */
-  const QUARTER: 705600000;
+  QUARTER: 705600000;
 
   /**
    * Check whether the key (passed in as a MIDI number) is a black key on a piano.
@@ -830,7 +830,7 @@ declare namespace SV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param k
    */
-  function blackKey(k: number): boolean;
+  blackKey(k: number): boolean;
 
   /**
    * Convert b from number of blicks into number of quarters.
@@ -840,7 +840,7 @@ declare namespace SV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param b
    */
-  function blick2Quarter(b: number): number;
+  blick2Quarter(b: number): number;
 
   /**
    * Convert b from blicks into seconds with the specified beats per minute bpm.
@@ -851,7 +851,7 @@ declare namespace SV {
    * @param b
    * @param bpm
    */
-  function blick2Seconds(b: number, bpm: number): number;
+  blick2Seconds(b: number, bpm: number): number;
 
   /**
    * Rounded division of dividend (blicks) over divisor (blicks).
@@ -860,7 +860,7 @@ declare namespace SV {
    * @param dividend
    * @param divisor
    */
-  function blickRoundDiv(dividend: number, divisor: number): number;
+  blickRoundDiv(dividend: number, divisor: number): number;
 
   /**
    * Returns the closest multiple of interval (blicks) from b (blick).
@@ -871,27 +871,27 @@ declare namespace SV {
    * @param b
    * @param interval
    */
-  function blickRoundTo(b: number, interval: number): number;
+  blickRoundTo(b: number, interval: number): number;
 
   /**
    * Create a new object. type can be one of the following type-specifying strings.
    * @param type A type-specifying string.
    */
-  function create(type: 'Note'): Note;
-  function create(type: 'Automation'): Automation;
-  function create(type: 'NoteGroup'): NoteGroup;
-  function create(type: 'NoteGroupReference'): NoteGroupReference;
-  function create(type: 'TrackMixer'): {}; // TODO To add later
-  function create(type: 'Track'): Track;
-  function create(type: 'TimeAxis'): TimeAxis;
-  function create(type: 'Project'): Project;
+  create(type: 'Note'): Note;
+  create(type: 'Automation'): Automation;
+  create(type: 'NoteGroup'): NoteGroup;
+  create(type: 'NoteGroupReference'): NoteGroupReference;
+  create(type: 'TrackMixer'): {}; // TODO To add later
+  create(type: 'Track'): Track;
+  create(type: 'TimeAxis'): TimeAxis;
+  create(type: 'Project'): Project;
 
   /**
    * Mark the finish of a script.
    * All subsequent async callbacks will not be executed.
    * Note that this does not cause the current script to exit immediately.
    */
-  function finish(): void;
+  finish(): void;
 
   /**
    * Convert a frequency in Hz to a MIDI number (semitones, where C4 is 60).
@@ -899,27 +899,27 @@ declare namespace SV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param f
    */
-  function freq2Pitch(f: number): number;
+  freq2Pitch(f: number): number;
 
   /**
    * Get the UI state object for arrangement view.
    */
-  function getArrangement(): ArrangementView;
+  getArrangement(): ArrangementView;
 
   /**
    * Get the text on the system clipboard.
    */
-  function getHostClipboard(): string;
+  getHostClipboard(): string;
 
   /**
    * Get {@link HostInfo}.
    */
-  function getHostInfo(): HostInfo;
+  getHostInfo(): HostInfo;
 
   /**
    * Get the UI state object for the piano roll.
    */
-  function getMainEditor(): MainEditorView;
+  getMainEditor(): MainEditorView;
 
   /**
    * Get the phonemes for all notes in a group (passed in as a group reference).
@@ -935,17 +935,17 @@ declare namespace SV {
    * We recommend script authors to wrap getPhonemesForGroup in a {@link SV#setTimeout} call in such cases.
    * @param group
    */
-  function getPhonemesForGroup(group: NoteGroupReference): string[];
+  getPhonemesForGroup(group: NoteGroupReference): string[];
 
   /**
    * Get the UI state object for controlling the playback.
    */
-  function getPlayback(): PlaybackControl; // TODO: Typo in "PlayBackControl"
+  getPlayback(): PlaybackControl; // TODO: Typo in "PlayBackControl"
 
   /**
    * Get the currently open project.
    */
-  function getProject(): Project;
+  getProject(): Project;
 
   /**
    * Convert a MIDI number (semitones, where C4 is 60) to a frequency in Hz.
@@ -953,7 +953,7 @@ declare namespace SV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param p
    */
-  function pitch2freq(p: number): number;
+  pitch2freq(p: number): number;
 
   /**
    * Convert q from number of quarters into number of blick.
@@ -963,7 +963,7 @@ declare namespace SV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param q
    */
-  function quarter2Blick(q: number): number;
+  quarter2Blick(q: number): number;
 
   /**
    * Convert s from seconds into blicks with the specified beats per minute bpm.
@@ -974,13 +974,13 @@ declare namespace SV {
    * @param s
    * @param bpm
    */
-  function seconds2Blick(s: number, bpm: number): number;
+  seconds2Blick(s: number, bpm: number): number;
 
   /**
    * Set the system clipboard.
    * @param text
    */
-  function setHostClipboard(text: string): void;
+  setHostClipboard(text: string): void;
 
   /**
    * Schedule a delayed call to callback after timeOut milliseconds.
@@ -991,14 +991,14 @@ declare namespace SV {
    * @param timeout
    * @param callback
    */
-  function setTimeout(timeout: number, callback: () => void): void;
+  setTimeout(timeout: number, callback: () => void): void;
 
   /**
    * The synchronous version of {@link SV#showCustomDialogAsync} that blocks the script execution until the user closes the dialog.
    * It returns the inputs (the completed form) from the user.
    * @param form
    */
-  function showCustomDialog(form: CustomDialogForm): WidgetAnswers;
+  showCustomDialog(form: CustomDialogForm): WidgetAnswers;
 
   /**
    * Display a custom dialog defined in form, without blocking the script execution.
@@ -1010,7 +1010,7 @@ declare namespace SV {
    * @param form
    * @param callback
    */
-  function showCustomDialogAsync(form: CustomDialogForm, callback: (answers: WidgetAnswers) => void): void;
+  showCustomDialogAsync(form: CustomDialogForm, callback: (answers: WidgetAnswers) => void): void;
 
   /**
    * The synchronous version of {@link SV#showInputBoxAsync} that blocks the script execution until the user closes the dialog.
@@ -1019,7 +1019,7 @@ declare namespace SV {
    * @param message
    * @param defaultText
    */
-  function showInputBox(title: string, message: string, defaultText: string): string;
+  showInputBox(title: string, message: string, defaultText: string): string;
 
   /**
    * Display a dialog with a text box and an "OK" button, without blocking the script execution.
@@ -1031,19 +1031,14 @@ declare namespace SV {
    * @param defaultText
    * @param callback
    */
-  function showInputBoxAsync(
-    title: string,
-    message: string,
-    defaultText: string,
-    callback: (answer: string) => void,
-  ): void;
+  showInputBoxAsync(title: string, message: string, defaultText: string, callback: (answer: string) => void): void;
 
   /**
    * The synchronous version of {@link SV#showMessageBoxAsync} that blocks the script execution until the user closes the message box.
    * @param title
    * @param message
    */
-  function showMessageBox(title: string, message: string): void;
+  showMessageBox(title: string, message: string): void;
 
   /**
    * Cause a message box to pop up without blocking the script execution.
@@ -1053,7 +1048,7 @@ declare namespace SV {
    * @param message
    * @param callback
    */
-  function showMessageBoxAsync(title: string, message: string, callback?: () => void): void;
+  showMessageBoxAsync(title: string, message: string, callback?: () => void): void;
 
   /**
    * The synchronous version of {@link SV#showOkCancelBoxAsync} that blocks the script execution until the user closes the message box.
@@ -1061,7 +1056,7 @@ declare namespace SV {
    * @param title
    * @param message
    */
-  function showOkCancelBox(title: string, message: string): boolean;
+  showOkCancelBox(title: string, message: string): boolean;
 
   /**
    * Display a message box with an "OK" button and a "Cancel" button, without blocking the script execution.
@@ -1072,14 +1067,14 @@ declare namespace SV {
    * @param message
    * @param callback
    */
-  function showOkCancelBoxAsync(title: string, message: string, callback: (answer: boolean) => void): void;
+  showOkCancelBoxAsync(title: string, message: string, callback: (answer: boolean) => void): void;
 
   /**
    * The synchronous version of {@link SV#showYesNoCancelBoxAsync} that blocks the script execution until the user closes the message box.
    * @param title
    * @param message
    */
-  function showYesNoCancelBox(title: string, message: string): YesNoCancelAnswer;
+  showYesNoCancelBox(title: string, message: string): YesNoCancelAnswer;
 
   /**
    * Display a message box with a "Yes" button, an "No" button and a "Cancel" button, without blocking the script execution.
@@ -1089,7 +1084,7 @@ declare namespace SV {
    * @param message
    * @param callback
    */
-  function showYesNoCancelBoxAsync(title: string, message: string, callback: (answer: YesNoCancelAnswer) => void): void;
+  showYesNoCancelBoxAsync(title: string, message: string, callback: (answer: YesNoCancelAnswer) => void): void;
 
   /**
    * Get a localized version of text based on the current UI language settings.
@@ -1098,10 +1093,10 @@ declare namespace SV {
    * @param text
    * @constructor
    */
-  function T(text: string): string;
+  T(text: string): string;
 }
 
-interface TempoMark {
+export interface TempoMark {
   /**
    * The position of the tempo mark in blicks
    */
@@ -1122,7 +1117,7 @@ interface TempoMark {
  * A project-wide object storing tempo and time signature marks.
  * It also handles the conversion between physical time (e.g. seconds) and musical time (e.g. quarters, blicks).
  */
-interface TimeAxis extends Cloneable, NestedObject {
+export interface TimeAxis extends Cloneable, NestedObject {
   /**
    * Insert a nomin/denom measure mark at position measure (a measure number).
    * If a measure mark exists at measure, update the information.
@@ -1209,7 +1204,7 @@ interface TimeAxis extends Cloneable, NestedObject {
  * <br>
  * The default voice properties of the Track is defined by the first {@link NoteGroupReference} (the main group).
  */
-interface Track extends Cloneable, NestedObject {
+export interface Track extends Cloneable, NestedObject {
   /**
    * Add a {@link NoteGroupReference} to this Track and return the index of the added group.
    * It keeps all groups sorted by onset position.
@@ -1291,7 +1286,7 @@ interface Track extends Cloneable, NestedObject {
  *   <li>use SV:getMainEditor():getSelection() in Lua</li>
  * </ul>
  */
-interface TrackInnerSelectionState extends NestedObject, SelectionStateBase, GroupSelection {
+export interface TrackInnerSelectionState extends NestedObject, SelectionStateBase, GroupSelection {
   /**
    * Unselect all notes. Return true if the selection has changed.
    */
@@ -1322,7 +1317,7 @@ interface TrackInnerSelectionState extends NestedObject, SelectionStateBase, Gro
   unselectNote(note: Note): boolean;
 }
 
-interface VoiceAttributes {
+export interface VoiceAttributes {
   /**
    * Pitch transition - offset (seconds)
    */
@@ -1399,7 +1394,7 @@ interface VoiceAttributes {
   alt: number[]; // TODO: Really number?
 }
 
-interface VoiceParameters {
+export interface VoiceParameters {
   /**
    * Pitch transition - duration left (seconds)
    */
@@ -1466,14 +1461,14 @@ interface VoiceParameters {
   paramGender: number;
 }
 
-interface WidgetAnswers {
+export interface WidgetAnswers {
   status: 'Yes' | 'No' | 'Cancel';
   answers: {
     [k: string]: string | number | boolean;
   };
 }
 
-interface SliderOptions {
+export interface SliderOptions {
   name: string;
   type: 'Slider';
   label: string;
@@ -1484,7 +1479,7 @@ interface SliderOptions {
   default: number;
 }
 
-interface ComboBoxOptions {
+export interface ComboBoxOptions {
   name: string;
   type: 'ComboBox';
   label: string;
@@ -1492,14 +1487,14 @@ interface ComboBoxOptions {
   default: number;
 }
 
-interface TextBoxOptions {
+export interface TextBoxOptions {
   name: string;
   type: 'TextBox';
   label: string;
   default: string;
 }
 
-interface TextAreaOptions {
+export interface TextAreaOptions {
   name: string;
   type: 'TextArea';
   label: string;
@@ -1507,13 +1502,13 @@ interface TextAreaOptions {
   default: string;
 }
 
-interface CheckBoxOptions {
+export interface CheckBoxOptions {
   name: string;
   type: 'CheckBox';
   text: string;
   default: boolean;
 }
 
-type WidgetOptions = SliderOptions | ComboBoxOptions | TextBoxOptions | TextAreaOptions | CheckBoxOptions;
+export type WidgetOptions = SliderOptions | ComboBoxOptions | TextBoxOptions | TextAreaOptions | CheckBoxOptions;
 
-type YesNoCancelAnswer = 'yes' | 'no' | 'cancel';
+export type YesNoCancelAnswer = 'yes' | 'no' | 'cancel';

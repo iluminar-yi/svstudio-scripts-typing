@@ -3,13 +3,13 @@
   "private": true,
   "files": [
     "!tests",
-    "tsconfig.json"
+    "*.d.ts"
   ],
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
-  "main": "global.d.ts",
+  "main": "index.d.ts",
   "scripts": {
-    "test": "./node_modules/.bin/tsc"
+    "test": "tsc"
   },
   "repository": {
     "type": "git",
