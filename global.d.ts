@@ -813,7 +813,7 @@ interface SelectionStateBase {
 /*
  * The host object is a global object named {@link SV} that can be accessed from anywhere in a script.
  */
-declare namespace SV {
+interface SVObject {
   /**
    * Number of blicks in a quarter. The value is 705600000.
    * <br>
@@ -822,7 +822,7 @@ declare namespace SV {
    * It is a large number chosen to be divisible by a lot of similarly purposed numbers used in music software.
    * The name originates from <a href="https://github.com/facebookarchive/Flicks">Flicks</a>.
    */
-  const QUARTER: 705600000;
+  QUARTER: 705600000;
 
   /**
    * Check whether the key (passed in as a MIDI number) is a black key on a piano.
@@ -830,7 +830,7 @@ declare namespace SV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param k
    */
-  function blackKey(k: number): boolean;
+  blackKey(k: number): boolean;
 
   /**
    * Convert b from number of blicks into number of quarters.
@@ -840,7 +840,7 @@ declare namespace SV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param b
    */
-  function blick2Quarter(b: number): number;
+  blick2Quarter(b: number): number;
 
   /**
    * Convert b from blicks into seconds with the specified beats per minute bpm.
@@ -851,7 +851,7 @@ declare namespace SV {
    * @param b
    * @param bpm
    */
-  function blick2Seconds(b: number, bpm: number): number;
+  blick2Seconds(b: number, bpm: number): number;
 
   /**
    * Rounded division of dividend (blicks) over divisor (blicks).
@@ -860,7 +860,7 @@ declare namespace SV {
    * @param dividend
    * @param divisor
    */
-  function blickRoundDiv(dividend: number, divisor: number): number;
+  blickRoundDiv(dividend: number, divisor: number): number;
 
   /**
    * Returns the closest multiple of interval (blicks) from b (blick).
@@ -871,27 +871,27 @@ declare namespace SV {
    * @param b
    * @param interval
    */
-  function blickRoundTo(b: number, interval: number): number;
+  blickRoundTo(b: number, interval: number): number;
 
   /**
    * Create a new object. type can be one of the following type-specifying strings.
    * @param type A type-specifying string.
    */
-  function create(type: 'Note'): Note;
-  function create(type: 'Automation'): Automation;
-  function create(type: 'NoteGroup'): NoteGroup;
-  function create(type: 'NoteGroupReference'): NoteGroupReference;
-  function create(type: 'TrackMixer'): {}; // TODO To add later
-  function create(type: 'Track'): Track;
-  function create(type: 'TimeAxis'): TimeAxis;
-  function create(type: 'Project'): Project;
+  create(type: 'Note'): Note;
+  create(type: 'Automation'): Automation;
+  create(type: 'NoteGroup'): NoteGroup;
+  create(type: 'NoteGroupReference'): NoteGroupReference;
+  create(type: 'TrackMixer'): {}; // TODO To add later
+  create(type: 'Track'): Track;
+  create(type: 'TimeAxis'): TimeAxis;
+  create(type: 'Project'): Project;
 
   /**
    * Mark the finish of a script.
    * All subsequent async callbacks will not be executed.
    * Note that this does not cause the current script to exit immediately.
    */
-  function finish(): void;
+  finish(): void;
 
   /**
    * Convert a frequency in Hz to a MIDI number (semitones, where C4 is 60).
@@ -899,27 +899,27 @@ declare namespace SV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param f
    */
-  function freq2Pitch(f: number): number;
+  freq2Pitch(f: number): number;
 
   /**
    * Get the UI state object for arrangement view.
    */
-  function getArrangement(): ArrangementView;
+  getArrangement(): ArrangementView;
 
   /**
    * Get the text on the system clipboard.
    */
-  function getHostClipboard(): string;
+  getHostClipboard(): string;
 
   /**
    * Get {@link HostInfo}.
    */
-  function getHostInfo(): HostInfo;
+  getHostInfo(): HostInfo;
 
   /**
    * Get the UI state object for the piano roll.
    */
-  function getMainEditor(): MainEditorView;
+  getMainEditor(): MainEditorView;
 
   /**
    * Get the phonemes for all notes in a group (passed in as a group reference).
@@ -935,17 +935,17 @@ declare namespace SV {
    * We recommend script authors to wrap getPhonemesForGroup in a {@link SV#setTimeout} call in such cases.
    * @param group
    */
-  function getPhonemesForGroup(group: NoteGroupReference): string[];
+  getPhonemesForGroup(group: NoteGroupReference): string[];
 
   /**
    * Get the UI state object for controlling the playback.
    */
-  function getPlayback(): PlaybackControl; // TODO: Typo in "PlayBackControl"
+  getPlayback(): PlaybackControl; // TODO: Typo in "PlayBackControl"
 
   /**
    * Get the currently open project.
    */
-  function getProject(): Project;
+  getProject(): Project;
 
   /**
    * Convert a MIDI number (semitones, where C4 is 60) to a frequency in Hz.
@@ -953,7 +953,7 @@ declare namespace SV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param p
    */
-  function pitch2freq(p: number): number;
+  pitch2freq(p: number): number;
 
   /**
    * Convert q from number of quarters into number of blick.
@@ -963,7 +963,7 @@ declare namespace SV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param q
    */
-  function quarter2Blick(q: number): number;
+  quarter2Blick(q: number): number;
 
   /**
    * Convert s from seconds into blicks with the specified beats per minute bpm.
@@ -974,13 +974,13 @@ declare namespace SV {
    * @param s
    * @param bpm
    */
-  function seconds2Blick(s: number, bpm: number): number;
+  seconds2Blick(s: number, bpm: number): number;
 
   /**
    * Set the system clipboard.
    * @param text
    */
-  function setHostClipboard(text: string): void;
+  setHostClipboard(text: string): void;
 
   /**
    * Schedule a delayed call to callback after timeOut milliseconds.
@@ -991,14 +991,14 @@ declare namespace SV {
    * @param timeout
    * @param callback
    */
-  function setTimeout(timeout: number, callback: () => void): void;
+  setTimeout(timeout: number, callback: () => void): void;
 
   /**
    * The synchronous version of {@link SV#showCustomDialogAsync} that blocks the script execution until the user closes the dialog.
    * It returns the inputs (the completed form) from the user.
    * @param form
    */
-  function showCustomDialog(form: CustomDialogForm): WidgetAnswers;
+  showCustomDialog(form: CustomDialogForm): WidgetAnswers;
 
   /**
    * Display a custom dialog defined in form, without blocking the script execution.
@@ -1010,7 +1010,7 @@ declare namespace SV {
    * @param form
    * @param callback
    */
-  function showCustomDialogAsync(form: CustomDialogForm, callback: (answers: WidgetAnswers) => void): void;
+  showCustomDialogAsync(form: CustomDialogForm, callback: (answers: WidgetAnswers) => void): void;
 
   /**
    * The synchronous version of {@link SV#showInputBoxAsync} that blocks the script execution until the user closes the dialog.
@@ -1019,7 +1019,7 @@ declare namespace SV {
    * @param message
    * @param defaultText
    */
-  function showInputBox(title: string, message: string, defaultText: string): string;
+  showInputBox(title: string, message: string, defaultText: string): string;
 
   /**
    * Display a dialog with a text box and an "OK" button, without blocking the script execution.
@@ -1031,7 +1031,7 @@ declare namespace SV {
    * @param defaultText
    * @param callback
    */
-  function showInputBoxAsync(
+  showInputBoxAsync(
     title: string,
     message: string,
     defaultText: string,
@@ -1043,7 +1043,7 @@ declare namespace SV {
    * @param title
    * @param message
    */
-  function showMessageBox(title: string, message: string): void;
+  showMessageBox(title: string, message: string): void;
 
   /**
    * Cause a message box to pop up without blocking the script execution.
@@ -1053,7 +1053,7 @@ declare namespace SV {
    * @param message
    * @param callback
    */
-  function showMessageBoxAsync(title: string, message: string, callback?: () => void): void;
+  showMessageBoxAsync(title: string, message: string, callback?: () => void): void;
 
   /**
    * The synchronous version of {@link SV#showOkCancelBoxAsync} that blocks the script execution until the user closes the message box.
@@ -1061,7 +1061,7 @@ declare namespace SV {
    * @param title
    * @param message
    */
-  function showOkCancelBox(title: string, message: string): boolean;
+  showOkCancelBox(title: string, message: string): boolean;
 
   /**
    * Display a message box with an "OK" button and a "Cancel" button, without blocking the script execution.
@@ -1072,14 +1072,14 @@ declare namespace SV {
    * @param message
    * @param callback
    */
-  function showOkCancelBoxAsync(title: string, message: string, callback: (answer: boolean) => void): void;
+  showOkCancelBoxAsync(title: string, message: string, callback: (answer: boolean) => void): void;
 
   /**
    * The synchronous version of {@link SV#showYesNoCancelBoxAsync} that blocks the script execution until the user closes the message box.
    * @param title
    * @param message
    */
-  function showYesNoCancelBox(title: string, message: string): YesNoCancelAnswer;
+  showYesNoCancelBox(title: string, message: string): YesNoCancelAnswer;
 
   /**
    * Display a message box with a "Yes" button, an "No" button and a "Cancel" button, without blocking the script execution.
@@ -1089,7 +1089,7 @@ declare namespace SV {
    * @param message
    * @param callback
    */
-  function showYesNoCancelBoxAsync(title: string, message: string, callback: (answer: YesNoCancelAnswer) => void): void;
+  showYesNoCancelBoxAsync(title: string, message: string, callback: (answer: YesNoCancelAnswer) => void): void;
 
   /**
    * Get a localized version of text based on the current UI language settings.
@@ -1098,8 +1098,10 @@ declare namespace SV {
    * @param text
    * @constructor
    */
-  function T(text: string): string;
+  T(text: string): string;
 }
+
+declare const SV: SVObject;
 
 interface TempoMark {
   /**

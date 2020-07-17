@@ -813,7 +813,7 @@ export interface SelectionStateBase {
 /**
  * The host object is a global object named {@link SV} that can be accessed from anywhere in a script.
  */
-export interface SV {
+export interface SVObject {
   /**
    * Number of blicks in a quarter. The value is 705600000.
    * <br>
