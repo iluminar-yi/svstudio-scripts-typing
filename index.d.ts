@@ -336,8 +336,13 @@ export interface HostInfo {
   /**
    * Language code for the UI, e.g. "en-us", "ja-jp", "zh-cn"
    */
-  languageCode: string;
+  languageCode: LanguageCode;
 }
+
+/**
+ * Known language codes, based on {@link https://github.com/Dreamtonics/svstudio-translations}
+ */
+export type LanguageCode = 'en-us' | 'ja-jp' | 'zh-cn' | 'fr-fr' | 'zh-tw' ;
 
 /**
  * The UI state object for the piano roll.
@@ -1460,6 +1465,11 @@ export interface VoiceParameters {
    */
   paramGender: number;
 }
+
+/**
+ * Returned by getTranslations(LanguageCode). First element is translation key. Second element is translation value.
+ */
+export type Translation = [string, string];
 
 export interface WidgetAnswers {
   status: 'Yes' | 'No' | 'Cancel';
