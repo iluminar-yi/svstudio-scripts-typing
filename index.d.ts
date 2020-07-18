@@ -134,9 +134,12 @@ export interface Automation extends Cloneable, NestedObject {
   simplify(begin: number, end: number, threshold?: number): boolean;
 }
 
+/**
+ * Returned by getClientInfo().
+ */
 export interface ClientInfo {
   name: string;
-  category: string;
+  category?: string;
   author: string;
   versionNumber: number;
   minEditorVersion: number;
