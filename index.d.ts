@@ -508,7 +508,7 @@ export interface Note extends Cloneable, NestedObject {
 /**
  * A set of notes ({@link Note}) and parameters ({@link Automation}) grouped together for convenient reuse.
  * <br>
- * To put a NoteGroup inside a {@linkTrack},
+ * To put a NoteGroup inside a {@link Track},
  * it has to be wrapped in a {@link NoteGroupReference} which provides the context
  * (e.g. voice, language, time and pitch offset) for the group.
  */
