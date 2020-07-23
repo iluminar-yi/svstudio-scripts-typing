@@ -961,7 +961,7 @@ export interface SynthV {
    * Conversions between musical and physical time in the context of a project are done by {@link TimeAxis}.
    * @param p
    */
-  pitch2freq(p: number): number;
+  pitch2Freq(p: number): number;
 
   /**
    * Convert q from number of quarters into number of blick.
