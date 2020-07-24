@@ -1195,7 +1195,7 @@ export interface TimeAxis extends Cloneable, NestedObject {
    * If a measure mark exists at measure, return true.
    * @param measure
    */
-  removeMeasureMark(measure: number): number;
+  removeMeasureMark(measure: number): boolean;
 
   /**
    * Remove the tempo mark at position b (blicks).
