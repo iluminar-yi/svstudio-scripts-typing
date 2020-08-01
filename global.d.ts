@@ -1328,62 +1328,62 @@ interface VoiceAttributes {
   /**
    * Pitch transition - offset (seconds)
    */
-  tF0Offset: number;
+  tF0Offset?: number;
 
   /**
    * Pitch transition - duration left (seconds)
    */
-  tF0Left: number;
+  tF0Left?: number;
 
   /**
    * Pitch transition - duration right (seconds)
    */
-  tF0Right: number;
+  tF0Right?: number;
 
   /**
    * Pitch transition - depth left (semitones)
    */
-  dF0Left: number;
+  dF0Left?: number;
 
   /**
    * Pitch transition - depth right (semitones)
    */
-  dF0Right: number;
+  dF0Right?: number;
 
   /**
    * Vibrato - start (seconds)
    */
-  tF0VbrStart: number;
+  tF0VbrStart?: number;
 
   /**
    * Vibrato - left (seconds)
    */
-  tF0VbrLeft: number;
+  tF0VbrLeft?: number;
 
   /**
    * Vibrato - right (seconds)
    */
-  tF0VbrRight: number;
+  tF0VbrRight?: number;
 
   /**
    * Vibrato - depth (semitones)
    */
-  dF0Vbr: number;
+  dF0Vbr?: number;
 
   /**
    * Vibrato - phase (radian, from -pi to pi)
    */
-  pF0Vbr: number;
+  pF0Vbr?: number;
 
   /**
    * Vibrato - frequency (Hz)
    */
-  fF0Vbr: number;
+  fF0Vbr?: number;
 
   /**
    * Timing and phonemes - note offset (seconds)
    */
-  tNoteOffset: number;
+  tNoteOffset?: number;
 
   /**
    * Expression group
